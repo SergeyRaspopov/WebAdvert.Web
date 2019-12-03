@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebAdvert.Web.Services;
 
 namespace WebAdvert.Web
 {
@@ -40,6 +41,8 @@ namespace WebAdvert.Web
             {
                 options.LoginPath = "/Accounts/Login";
             });
+
+            services.AddTransient<IFileUploader, S3FileUploader>();
             services.AddControllersWithViews();
         }
 
